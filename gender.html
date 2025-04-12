@@ -12,13 +12,64 @@
       background: #fdfcf9;
     }
 
+    /* Header styles */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #004085;
+      padding: 10px 25px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+    .logo-container img {
+      width: 60px;
+      height: 60px;
+      margin-right: 10px;
+    }
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #ffffff;
+    }
+    .nav-buttons {
+      display: flex;
+      align-items: center;
+    }
+    .nav-buttons a {
+      margin-left: 12px;
+      text-decoration: none;
+      color: #ffffff;
+      background-color: #0069d9;
+      padding: 8px 15px;
+      border-radius: 5px;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+    .nav-buttons a:hover {
+      background-color: #0056b3;
+    }
+    .user-icon {
+      margin-left: 12px;
+      color: #ffffff;
+      font-size: 24px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .user-icon:hover {
+      color: #cccccc;
+    }
+
+    /* Filter page content styles */
     .main {
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       padding: 40px 16px;
-      position: relative;
     }
 
     .card {
@@ -132,80 +183,82 @@
       cursor: pointer;
       text-decoration: underline;
     }
-
-    footer {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 80px;
-      background: linear-gradient(to right, #2d2a41, #2e2742);
-      transform: rotate(-2deg);
-      transform-origin: top left;
-    }
   </style>
 </head>
 <body>
 
-<div class="main">
-  <div class="card">
-    <div class="progress">
-      <div class="dot active"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
+  <!-- Header from coverpage.html -->
+  <div class="header">
+    <div class="logo-container">
+      <img src="logo.png" alt="Logo">
+      <div class="logo">Scheme Navigator</div>
     </div>
-    <h2>Tell us about yourself</h2>
-
-    <div class="gender-options">
-      <div class="gender-card" onclick="selectGender('male', this)">
-        <!-- Male Icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" fill="blue" viewBox="0 0 24 24"><path d="M20 4v5h-2V7.41l-4.3 4.3a6 6 0 11-1.41-1.41l4.3-4.3H15V4h5zM10 18a4 4 0 100-8 4 4 0 000 8z"/></svg>
-        <span>Male</span>
-      </div>
-      <div class="gender-card" onclick="selectGender('female', this)">
-        <!-- Female Icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" fill="deeppink" viewBox="0 0 24 24"><path d="M12 4a6 6 0 100 12 6 6 0 000-12zM13 17v2h2v2h-2v2h-2v-2h-2v-2h2v-2h2z"/></svg>
-        <span>Female</span>
-      </div>
-      <div class="gender-card" onclick="selectGender('other', this)">
-        <!-- Other/Transgender Icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" fill="#8e44ad" viewBox="0 0 24 24"><path d="M13 4a1 1 0 00-2 0v1.07a7.002 7.002 0 000 13.86V20a1 1 0 002 0v-1.07a7.002 7.002 0 000-13.86V4zM12 8a5 5 0 110 10 5 5 0 010-10z"/></svg>
-        <span>Transgender</span>
-      </div>
-    </div>
-
-    <div class="actions">
-      <button class="btn" onclick="nextPage()">Next</button>
-      <div class="reset" onclick="resetSelection()">Reset Form</div>
+    <div class="nav-buttons">
+      <a href="login.html">Login</a>
+      <a href="registration.html">Register</a>
+      <i class="fa-solid fa-user-circle user-icon" title="User Profile"></i>
     </div>
   </div>
 
-  <footer></footer>
-</div>
+  <!-- Filter page content -->
+  <div class="main">
+    <div class="card">
+      <div class="progress">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <h2>Gender</h2>
 
-<script>
-  let selectedGender = null;
+      <div class="gender-options">
+        <div class="gender-card" onclick="selectGender('male', this)">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="blue" viewBox="0 0 24 24"><path d="M20 4v5h-2V7.41l-4.3 4.3a6 6 0 11-1.41-1.41l4.3-4.3H15V4h5zM10 18a4 4 0 100-8 4 4 0 000 8z"/></svg>
+          <span>Male</span>
+        </div>
+        <div class="gender-card" onclick="selectGender('female', this)">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="deeppink" viewBox="0 0 24 24"><path d="M12 4a6 6 0 100 12 6 6 0 000-12zM13 17v2h2v2h-2v2h-2v-2h-2v-2h2v-2h2z"/></svg>
+          <span>Female</span>
+        </div>
+        <div class="gender-card" onclick="selectGender('other', this)">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="#8e44ad" viewBox="0 0 24 24"><path d="M13 4a1 1 0 00-2 0v1.07a7.002 7.002 0 000 13.86V20a1 1 0 002 0v-1.07a7.002 7.002 0 000-13.86V4zM12 8a5 5 0 110 10 5 5 0 010-10z"/></svg>
+          <span>Transgender</span>
+        </div>
+      </div>
 
-  function selectGender(gender, el) {
-    selectedGender = gender;
-    document.querySelectorAll('.gender-card').forEach(card => card.classList.remove('selected'));
-    el.classList.add('selected');
-  }
+      <div class="actions">
+        <button class="btn" onclick="nextPage()">Next</button>
+        <div class="reset" onclick="resetSelection()">Reset Form</div>
+      </div>
+    </div>
+  </div>
 
-  function nextPage() {
-    if (!selectedGender) {
-      alert("Please select a gender.");
-      return;
+  <script>
+    let selectedGender = null;
+
+    function selectGender(gender, el) {
+      selectedGender = gender;
+      document.querySelectorAll('.gender-card').forEach(card => card.classList.remove('selected'));
+      el.classList.add('selected');
     }
-    localStorage.setItem("gender", selectedGender);
-    window.location.href = "age.html";
-  }
 
-  function resetSelection() {
-    selectedGender = null;
-    document.querySelectorAll('.gender-card').forEach(card => card.classList.remove('selected'));
-  }
-</script>
+    function nextPage() {
+      if (!selectedGender) {
+        alert("Please select a gender.");
+        return;
+      }
+      localStorage.setItem("gender", selectedGender);
+      window.location.href = "age.html";
+    }
+
+    function resetSelection() {
+      selectedGender = null;
+      document.querySelectorAll('.gender-card').forEach(card => card.classList.remove('selected'));
+    }
+  </script>
 
 </body>
 </html>
