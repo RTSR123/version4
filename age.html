@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Filter - Age & Disability</title>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      max-width: 400px;
+      width: 90%;
+      position: relative;
+    }
+
+    .step-dots {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .dot {
+      width: 14px;
+      height: 14px;
+      background-color: #ccc;
+      border-radius: 50%;
+      transition: background-color 0.3s;
+    }
+
+    .dot.active {
+      background-color: #27ae60;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 8px;
+      color: #2c3e50;
+      font-weight: 600;
+      text-align: left;
+      width: 100%;
+    }
+
+    input, select {
+      font-size: 16px;
+      padding: 12px;
+      margin: 10px 0 25px;
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #1b5e20;
+      color: white;
+      padding: 14px 28px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: background 0.3s ease;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #1b5e20;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Progress Dots -->
+    <div class="step-dots">
+      <div class="dot active"></div>
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+    <h2>Enter Your Age</h2>
+    <input type="number" id="age" placeholder="Enter your age" min="0" />
+
+    <h2>Are you a Person with Disability?</h2>
+    <select id="disability">
+      <option value="">-- Select an option --</option>
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+
+    <button onclick="nextPage()">Next</button>
+  </div>
+
+  <script>
+    function nextPage() {
+      const age = document.getElementById("age").value;
+      const disability = document.getElementById("disability").value;
+
+      if (!age || age < 0) {
+        alert("Please enter a valid age.");
+        return;
+      }
+
+      if (!disability) {
+        alert("Please select your disability status.");
+        return;
+      }
+
+      localStorage.setItem("age", age);
+      localStorage.setItem("disability", disability);
+
+      window.location.href = "income.html"; // Proceed to next filter
+    }
+  </script>
+
+</body>
+</html>

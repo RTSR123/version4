@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Filter - Marital Status</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #fdfcf9;
+    }
+
+    .main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 40px 16px;
+      position: relative;
+    }
+
+    .card {
+      background-color: white;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .progress {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 30px;
+    }
+
+    .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #ccc;
+      transition: 0.3s;
+    }
+
+    .dot.active {
+      background: #2e7d32;
+    }
+
+    h2 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    p.subtext {
+      margin: 0 0 24px;
+      color: #777;
+      font-size: 15px;
+    }
+
+    .icon-preview svg {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 20px;
+    }
+
+    .select-options {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .option {
+      padding: 12px 24px;
+      border: 2px solid #ccc;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 16px;
+    }
+
+    .option.selected {
+      background-color: #2e7d32;
+      color: white;
+      border-color: #2e7d32;
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn {
+      padding: 12px 32px;
+      font-size: 16px;
+      background: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #1b5e20;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background: linear-gradient(to right, #2d2a41, #2e2742);
+      transform: rotate(-2deg);
+      transform-origin: top left;
+    }
+  </style>
+</head>
+<body>
+
+<div class="main">
+  <div class="card">
+    <div class="progress">
+      <div class="dot active"></div>
+      <div class="dot active"></div>
+      <div class="dot active"></div>
+    </div>
+
+    <h2>Marital Status</h2>
+
+    <div class="icon-preview">
+      <!-- Inline SVG for wedding rings -->
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="36" r="16" stroke="black" stroke-width="4"/>
+        <circle cx="40" cy="36" r="16" stroke="black" stroke-width="4"/>
+        <rect x="20" y="14" width="8" height="4" rx="2" fill="black"/>
+      </svg>
+    </div>
+
+    <div class="select-options">
+      <div class="option" onclick="selectStatus(this)">Single</div>
+      <div class="option" onclick="selectStatus(this)">Married</div>
+      <div class="option" onclick="selectStatus(this)">Divorced</div>
+      <div class="option" onclick="selectStatus(this)">Widow</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn" onclick="nextPage()">Next</button>
+    </div>
+  </div>
+
+  <footer></footer>
+</div>
+
+<script>
+  let selectedStatus = "";
+
+  function selectStatus(el) {
+    document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedStatus = el.innerText;
+  }
+
+  function nextPage() {
+    if (!selectedStatus) {
+      alert("Please select a marital status.");
+      return;
+    }
+    localStorage.setItem("marital_status", selectedStatus);
+    window.location.href = "residence.html";
+  }
+</script>
+
+</body>
+</html>
